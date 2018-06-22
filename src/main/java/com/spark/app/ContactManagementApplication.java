@@ -42,7 +42,6 @@ public class ContactManagementApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
 		// DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		// contactRepository.save(new Contact("bale", "itachi", df.parse("29/01/1992"),
 		// "201548", "image"));

@@ -2,15 +2,16 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +34,7 @@ public class UserController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@PostMapping("/signin")
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	@ApiOperation(value = "${UserController.signin}")
 	@ApiResponses(value = { //
 			@ApiResponse(code = 400, message = "Something went wrong"), //
@@ -42,10 +43,18 @@ public class UserController {
 	public String login(//
 			@ApiParam("username") @RequestParam String username, //
 			@ApiParam("password") @RequestParam String password) {
-		return userService.signin(username, password);
+		JSONObject outputJsonObj = new JSONObject();
+		try {
+			outputJsonObj.put("user", username);
+			outputJsonObj.put("token", userService.signin(username, password));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return outputJsonObj.toString();
+		// return userService.signin(username, password);
 	}
 
-	@PostMapping("/signup")
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	@ApiOperation(value = "${UserController.signup}")
 	@ApiResponses(value = { //
 			@ApiResponse(code = 400, message = "Something went wrong"), //
@@ -57,7 +66,7 @@ public class UserController {
 		return userService.signup(modelMapper.map(user, User.class));
 	}
 
-	@DeleteMapping(value = "/{username}")
+	@RequestMapping(value = "/{username}", method = RequestMethod.DELETE)
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@ApiOperation(value = "${UserController.delete}")
 	@ApiResponses(value = { //
