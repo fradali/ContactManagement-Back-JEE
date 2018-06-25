@@ -43,13 +43,21 @@ public class ContactManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		// contactRepository.save(new Contact("bale", "itachi", df.parse("29/01/1992"),
+		// contactRepository.save(new Contact("az", "azeza", df.parse("29/01/1992"),
 		// "201548", "image"));
-		// contactRepository.save(new Contact("date", "mate", df.parse("20/05/1990"),
+		// contactRepository.save(new Contact("sc", "ali", df.parse("20/05/1990"),
 		// "201548", "image"));
-		// contactRepository.save(new Contact("cr7", "uku", df.parse("11/12/1989"),
+		// contactRepository.save(new Contact("cqdd", "daijobo", df.parse("11/12/1989"),
 		// "201548", "image"));
-		// contactRepository.save(new Contact("oka", "Uzumaki", df.parse("14/03/1992"),
+		// contactRepository.save(new Contact("azed", "hello", df.parse("14/03/1992"),
+		// "201548", "image"));
+		// contactRepository.save(new Contact("qsdqd", "rchayd", df.parse("29/01/1992"),
+		// "201548", "image"));
+		// contactRepository.save(new Contact("aze", "ali", df.parse("20/05/1990"),
+		// "201548", "image"));
+		// contactRepository.save(new Contact("eaea", "aze", df.parse("11/12/1989"),
+		// "201548", "image"));
+		// contactRepository.save(new Contact("dcvv", "zzz", df.parse("14/03/1992"),
 		// "201548", "image"));
 		//
 		// User admin = new User();
